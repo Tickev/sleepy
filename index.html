@@ -17,7 +17,7 @@
 
 <body>
     <header id="header">
-        <div class="container header-container">
+        <div class="wide-wrapper header-container">
             <a href="#" class="logo">Sleepy<span class="dot">.</span></a>
             <nav>
                 <ul class="nav-links">
@@ -27,27 +27,21 @@
                     <li><a href="#download" class="btn-primary small">Télécharger Sleepy</a></li>
                 </ul>
             </nav>
-            <div class="mobile-menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
         </div>
     </header>
 
     <main>
         <!-- Hero Section -->
         <section id="hero">
-            <div class="hero-bg">
-                <!-- Placeholder for the cloud/starry night background -->
-                <div class="stars"></div>
-                <div class="clouds"></div>
-            </div>
-            <div class="container hero-content fade-in-up">
-                <h1>Découvre le pouvoir d'un<br>sommeil <em>réparateur</em></h1>
-                <p>Mieux vous comprenez votre sommeil, mieux vous pourrez l'optimiser et profiter de nuits vraiment
-                    réparatrices.</p>
-                <a href="#download" class="btn-hero">Je veux mieux dormir</a>
+            <div class="wide-wrapper">
+                <div class="hero-banner fade-in-up">
+                    <div class="hero-content">
+                        <h1>Découvre le pouvoir d'un sommeil <em>réparateur</em></h1>
+                        <p>Sleepy t’accompagne chaque soir avec une routine pour calmer ton esprit et faciliter ton
+                            endormissement</p>
+                        <a href="#download" class="btn-hero">Je teste ma routine</a>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -56,7 +50,7 @@
             <div class="container">
                 <div class="section-header fade-in-up">
                     <h2>Ta routine <em>id&eacute;ale</em></h2>
-                    <p>Définir ses objectifs de sommeil n'a jamais été aussi simple.</p>
+                    <p>Une méthode simple et efficace pour transformer tes nuits</p>
                 </div>
                 <div class="routine-grid">
                     <div class="routine-card glass fade-in-up delay-100">
@@ -70,8 +64,8 @@
                             </svg>
                         </div>
                         <h3>Pourquoi</h3>
-                        <p>Un sommeil de qualité est essentiel pour la santé physique et mentale. Comprendre pourquoi
-                            vous souhaitez améliorer votre sommeil est le premier pas.</p>
+                        <p>Un sommeil de qualité est essentiel pour ta santé physique et mentale. Stress, écrans, rythme
+                            de vie peuvent perturber ton repos.</p>
                         <ul class="check-list">
                             <li>Stress et anxiété réduits</li>
                             <li>Améliorer sa santé</li>
@@ -87,8 +81,8 @@
                             </svg>
                         </div>
                         <h3>Quoi</h3>
-                        <p>Une routine permet à votre corps et à votre esprit de se détendre. Chaque soir, préparez
-                            votre nuit avec soin.</p>
+                        <p>Une routine personnalisée qui s'adapte à tes besoins et préférences. Chaque soir, profite
+                            d'une expérience unique.</p>
                         <ul class="check-list">
                             <li>Méditation guidée</li>
                             <li>Sons relaxants</li>
@@ -107,8 +101,8 @@
                             </svg>
                         </div>
                         <h3>Comment</h3>
-                        <p>Laissez-vous guider. Sleepy vous aide à mettre en place les bonnes habitudes pour un sommeil
-                            réparateur.</p>
+                        <p>Simple et efficace. Lance ta routine 30 minutes avant le coucher et laisse-toi guider vers un
+                            sommeil réparateur.</p>
                         <ul class="check-list">
                             <li>Suivi de sommeil</li>
                             <li>Réveil intelligent</li>
@@ -124,30 +118,25 @@
             <div class="container">
                 <div class="section-header fade-in-up">
                     <h2>Du contenu pour <em>mieux</em> dormir</h2>
-                    <p>Découvrez des outils conçus pour apaiser votre esprit et transformer vos nuits.</p>
+                    <p>Explorez tous les outils conçus pour accompagner vos nuits et transformer votre quotidien.</p>
                 </div>
-                <!-- Grid layouts matching visual -->
                 <div class="bento-grid">
-                    <!-- Audio Content Card -->
                     <div class="bento-item audio-card glass fade-in-up">
                         <div class="audio-content">
                             <h3>+100</h3>
                             <h4>Contenus audios de qualité</h4>
-                            <p>Méditations, bruits blancs, histoires pour dormir...</p>
+                            <p>Méditation guidée, exercices de respiration, podcast, ambiance sonore, musiques...</p>
                         </div>
                         <div class="audio-visual">
-                            <!-- Abstract representation of icons grid -->
                             <div class="icon-grid">
-                                <span>🌙</span><span>🌧️</span><span>🌊</span>
-                                <span>🎹</span><span>🔥</span><span>🧘‍♀️</span>
-                                <span>🦉</span><span>🌲</span><span>💤</span>
+                                <img src="images/icone_liste.png" alt="Audio Content">
                             </div>
                         </div>
                     </div>
 
                     <!-- Smart Alarm Card -->
                     <div class="bento-item alarm-card glass fade-in-up delay-100">
-                        <h4>Un réveil intelligent</h4>
+                        <h3>Un réveil intelligent</h3>
                         <div class="alarm-visual">
                             <div class="circle-chart">
                                 <span class="time">07:30</span>
@@ -158,37 +147,24 @@
                     <!-- Night Mode Card -->
                     <div class="bento-item night-mode-card glass fade-in-up delay-200">
                         <h4>Un mode "Nuit paisible"</h4>
-                        <!-- Image placeholder -->
-                        <div class="mode-visual">
-                            <img src="images/night-mode-ui.png" alt="Mode Nuit UI" onerror="this.style.display='none'">
-                            <!-- Fallback CSS rep -->
-                            <div class="moon-graphic"></div>
-                        </div>
                     </div>
 
                     <!-- Journal Card -->
                     <div class="bento-item journal-card glass fade-in-up delay-300">
-                        <div class="journal-text">
-                            <h4>Un journal de bord</h4>
-                            <p>Notez vos ressentis et identifiez ce qui impacte votre sommeil.</p>
-                            <div class="tags">
-                                <span class="tag">Sport</span>
-                                <span class="tag">Caféine</span>
-                                <span class="tag">Stress</span>
-                                <span class="tag">Écrans</span>
+                        <div class="journal-content">
+                            <h3>Un journal de bord</h3>
+                            <p>Notez vos ressentis pour identifier les routines qui transforment réellement votre
+                                énergie au
+                                quotidien.</p>
+                            <div class="mood-cloud">
+                                <span class="mood-badge badge-1">Reposé</span>
+                                <span class="mood-badge badge-2">Détendu</span>
+                                <span class="mood-badge badge-3">Calme</span>
+                                <span class="mood-badge badge-4">Énergique</span>
                             </div>
                         </div>
-                        <div class="journal-ui">
-                            <!-- UI mockup partial -->
-                            <div class="week-row">
-                                <div class="day active">L</div>
-                                <div class="day">M</div>
-                                <div class="day">M</div>
-                                <div class="day">J</div>
-                                <div class="day">V</div>
-                                <div class="day">S</div>
-                                <div class="day">D</div>
-                            </div>
+                        <div class="journal-visual">
+                            <img src="images/sleepy-app.jpg" alt="Journal Interface" class="journal-image">
                         </div>
                     </div>
                 </div>
@@ -200,94 +176,143 @@
             <div class="container">
                 <div class="section-header fade-in-up">
                     <h2>Validé par les <em>experts</em></h2>
-                    <p>Fruit de recherches approfondies, la méthode Sleepy est recommandée par des spécialistes du
-                        sommeil.</p>
+                    <p>Écoutez Sophie, notre expert partenaire, expliquer en 60 secondes pourquoi une routine sonore
+                        change tout</p>
                 </div>
 
                 <div class="expert-card glass fade-in-up">
-                    <div class="expert-profile">
-                        <div class="expert-avatar">
-                            <img src="images/expert.jpg" alt="Sophie Martin"
-                                onerror="this.src='https://ui-avatars.com/api/?name=Sophie+Martin&background=6366f1&color=fff'">
+                    <div class="player-container">
+                        <div class="player-top">
+                            <div class="expert-info">
+                                <img src="images/expert.png" alt="Sophie Martin" class="expert-avatar">
+                                <div class="expert-text">
+                                    <h4>Sophie Martin</h4>
+                                    <span>Neurologue spécialisée en médecine du sommeil</span>
+                                </div>
+                            </div>
+                            <button id="play-pause-btn" class="play-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg>
+                            </button>
                         </div>
-                        <div class="expert-info">
-                            <h4>Sophie Martin</h4>
-                            <span>Psychologue spécialisée dans le sommeil</span>
+                        <div class="player-bottom">
+                            <span id="current-time">00:00</span>
+                            <div class="progress-bar-container">
+                                <input type="range" id="seek-slider" max="100" value="0">
+                                <div class="progress-fill"></div>
+                            </div>
+                            <span id="duration">01:00</span>
                         </div>
-                        <button class="play-btn-large">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="currentColor">
-                                <path d="M8 5v14l11-7z" />
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="audio-track">
-                        <span class="current-time">01:30</span>
-                        <div class="progress-bar">
-                            <div class="progress" style="width: 35%"></div>
-                        </div>
-                        <span class="total-time">04:20</span>
+                        <audio id="expert-audio" src="audio/sophie.mp3"></audio>
+                        <!-- Placeholder for real audio -->
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- FAQ Section -->
+        <!-- FAQ Section -->
         <section id="faq">
             <div class="container">
                 <div class="section-header fade-in-up">
                     <h2>Questions <em>fréquentes</em></h2>
-                    <p>Tout ce que vous souhaitez savoir sur Sleepy.</p>
                 </div>
-                <div class="faq-container">
-                    <div class="faq-item glass fade-in-up delay-100">
-                        <button class="faq-question">
-                            Comment fonctionne Sleepy ?
-                            <span class="chevron">⌄</span>
-                        </button>
+                <!-- FAQ Content -->
+                <div class="faq-container fade-in-up">
+                    <!-- Q1 -->
+                    <div class="faq-item glass">
+                        <div class="faq-question">
+                            <span>Comment fonctionne Sleepy ?</span>
+                            <span class="chevron">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                        </div>
                         <div class="faq-answer">
-                            <p>Sleepy utilise les capteurs de votre téléphone pour analyser vos mouvements et bruits
-                                nocturnes, déterminant ainsi vos cycles de sommeil.</p>
+                            <p>Sleepy combine des techniques de relaxation sonore, de méditation guidée et d'analyse du
+                                sommeil. Vous créez votre routine personnalisée pour apaiser votre esprit avant de
+                                dormir, et l'application suit vos cycles pour vous réveiller au meilleur moment.</p>
                         </div>
                     </div>
-                    <div class="faq-item glass fade-in-up delay-200">
-                        <button class="faq-question">
-                            Est-ce que je dois porter un accessoire ?
-                            <span class="chevron">⌄</span>
-                        </button>
+
+                    <!-- Q2 -->
+                    <div class="faq-item glass">
+                        <div class="faq-question">
+                            <span>En combien de temps vais-je voir les résultats ?</span>
+                            <span class="chevron">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                        </div>
                         <div class="faq-answer">
-                            <p>Non, aucun accessoire n'est nécessaire. Posez simplement votre téléphone sur votre table
-                                de nuit ou près de votre oreiller.</p>
+                            <p>La plupart de nos utilisateurs ressentent une amélioration de leur endormissement dès la
+                                première semaine. Pour une qualité de sommeil durable et profonde, nous recommandons une
+                                utilisation régulière de Sleepy pendant 3 à 4 semaines.</p>
                         </div>
                     </div>
-                    <div class="faq-item glass fade-in-up delay-300">
-                        <button class="faq-question">
-                            Puis-je utiliser Sleepy en mode avion ?
-                            <span class="chevron">⌄</span>
-                        </button>
+
+                    <!-- Q3 -->
+                    <div class="faq-item glass">
+                        <div class="faq-question">
+                            <span>Puis-je utiliser Sleepy si je prends déjà des médicaments pour dormir ?</span>
+                            <span class="chevron">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                        </div>
                         <div class="faq-answer">
-                            <p>Oui, Sleepy fonctionne parfaitement en mode avion. C'est même recommandé pour éviter les
-                                ondes pendant votre sommeil.</p>
+                            <p>Absolument. Sleepy est une méthode douce et naturelle qui peut compléter un traitement
+                                médical en favorisant la relaxation. Cependant, n'hésitez pas à en parler à votre
+                                médecin traitant pour vous assurer que cela s'intègre bien à votre suivi.</p>
                         </div>
                     </div>
-                    <div class="faq-item glass fade-in-up delay-400">
-                        <button class="faq-question">
-                            Explication du réveil intelligent ?
-                            <span class="chevron">⌄</span>
-                        </button>
+
+                    <!-- Q4 -->
+                    <div class="faq-item glass">
+                        <div class="faq-question">
+                            <span>L'application fonctionne-t-elle hors ligne ?</span>
+                            <span class="chevron">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                        </div>
                         <div class="faq-answer">
-                            <p>Le réveil intelligent détecte votre phase de sommeil la plus légère dans une fenêtre de
-                                30 minutes avant votre heure de réveil pour vous réveiller en douceur.</p>
+                            <p>Oui ! Vous pouvez télécharger vos histoires, musiques ou méditations préférées
+                                directement dans l'application pour en profiter en mode avion, sans aucune connexion
+                                internet, idéal pour une nuit sans perturbations.</p>
                         </div>
                     </div>
-                    <div class="faq-item glass fade-in-up delay-500">
-                        <button class="faq-question">
-                            Comment sont protégées mes données ?
-                            <span class="chevron">⌄</span>
-                        </button>
+
+                    <!-- Q5 -->
+                    <div class="faq-item glass">
+                        <div class="faq-question">
+                            <span>Comment puis-je annuler mon abonnement ?</span>
+                            <span class="chevron">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                        </div>
                         <div class="faq-answer">
-                            <p>Vos données de sommeil sont stockées localement sur votre téléphone et ne sont jamais
-                                partagées sans votre consentement.</p>
+                            <p>Vous êtes libre. Vous pouvez gérer et annuler votre abonnement à tout moment depuis les
+                                réglages de votre compte Sleepy ou directement via les paramêtres d'abonnement de votre
+                                App Store ou Google Play Store.</p>
                         </div>
                     </div>
                 </div>

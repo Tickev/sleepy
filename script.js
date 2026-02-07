@@ -77,21 +77,65 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Expert Audio Player (Visual Mockup Logic)
-    const playBtn = document.querySelector('.play-btn-large');
-    if (playBtn) {
+    // Expert Audio Player Logic
+    const audio = document.getElementById('expert-audio');
+    const playBtn = document.getElementById('play-pause-btn');
+    const seekSlider = document.getElementById('seek-slider');
+    const currentTimeEl = document.getElementById('current-time');
+    const durationEl = document.getElementById('duration');
+    const progressFill = document.querySelector('.progress-fill');
+
+    if (audio && playBtn) {
+        // Handle Audio Errors
+        audio.addEventListener('error', (e) => {
+            console.error("Audio error:", e);
+            alert("Impossible de lire l'audio. Vérifiez que le fichier 'audio/expert_message.mp3' existe.");
+            playBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>'; // Error/Info icon
+        });
+
+        // Toggle Play/Pause
         playBtn.addEventListener('click', () => {
-            // Visual toggle only
-            const icon = playBtn.querySelector('svg');
-            if (playBtn.classList.contains('playing')) {
-                playBtn.classList.remove('playing');
-                // Play icon
-                icon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+            if (audio.paused) {
+                audio.play();
+                playBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M6 4h4v16H6zm8 0h4v16h-4z"/></svg>'; // Pause icon
             } else {
-                playBtn.classList.add('playing');
-                // Pause icon
-                icon.innerHTML = '<path d="M6 4h4v16H6zm8 0h4v16h-4z"/>';
+                audio.pause();
+                playBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>'; // Play icon
             }
         });
+
+        // Update Progress Bar & Time
+        audio.addEventListener('timeupdate', () => {
+            const current = audio.currentTime;
+            const duration = audio.duration || 0;
+
+            // Format Time
+            currentTimeEl.textContent = formatTime(current);
+            if (!isNaN(duration)) {
+                durationEl.textContent = formatTime(duration);
+            }
+
+            // Update Seek Slider & Fill
+            if (duration > 0) {
+                const percent = (current / duration) * 100;
+                seekSlider.value = percent;
+                progressFill.style.width = `${percent}%`;
+            }
+        });
+
+        // Seek functionality
+        seekSlider.addEventListener('input', (e) => {
+            const duration = audio.duration || 0;
+            const seekTo = duration * (e.target.value / 100);
+            audio.currentTime = seekTo;
+            progressFill.style.width = `${e.target.value}%`;
+        });
+
+        // Helper: Format Time (MM:SS)
+        function formatTime(seconds) {
+            const min = Math.floor(seconds / 60);
+            const sec = Math.floor(seconds % 60);
+            return `${min < 10 ? '0' : ''}${min}:${sec < 10 ? '0' : ''}${sec}`;
+        }
     }
 });

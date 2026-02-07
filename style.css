@@ -1,18 +1,13 @@
 :root {
     --bg-color: #020617;
-    /* Very dark blue, almost black */
     --surface-color: rgba(30, 41, 59, 0.4);
-    /* Glassy surface */
     --primary-color: #6366f1;
-    /* Indigo */
     --accent-color: #38bdf8;
-    /* Sky blue */
     --text-color: #f8fafc;
     --text-muted: #94a3b8;
 
     --glass-bg: rgba(255, 255, 255, 0.03);
     --glass-border: rgba(255, 255, 255, 0.08);
-    /* Fainter border */
 
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Outfit', sans-serif;
@@ -42,7 +37,7 @@ body {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 var(--spacing-md);
 }
@@ -78,7 +73,7 @@ h1 em {
 p {
     color: var(--text-muted);
     font-size: 1.1rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 a {
@@ -115,13 +110,19 @@ a {
     background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
     border: 1px solid rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
-    margin-top: 2rem;
 }
 
 .btn-primary:hover,
 .btn-hero:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.wide-wrapper {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 4rem;
+    /* Custom wide padding */
 }
 
 /* Glass Effect */
@@ -178,56 +179,47 @@ header {
 /* Hero Section */
 #hero {
     position: relative;
-    height: 100vh;
+    min-height: 600px;
+    /* Increased height for impact */
+    /* Remove 100vh constraint */
+    padding-top: calc(80px + 2rem);
+    /* Header height + spacing */
+    padding-bottom: var(--spacing-lg);
+    display: block;
+}
+
+.hero-banner {
+    position: relative;
+    width: 100%;
+    min-height: 600px;
+    /* Banner height */
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    background: url('images/background.jpg') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-.hero-bg {
+/* Optional overlay to improve text contrast on the image */
+.hero-banner::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
-    background: radial-gradient(circle at 50% 120%, #1e1b4b 0%, #020617 60%);
-}
-
-.stars {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-image:
-        radial-gradient(1px 1px at 20px 30px, #fff, transparent),
-        radial-gradient(1px 1px at 40px 70px, #fff, transparent),
-        radial-gradient(1px 1px at 50px 160px, #fff, transparent),
-        radial-gradient(1px 1px at 90px 40px, #fff, transparent),
-        radial-gradient(1.5px 1.5px at 130px 80px, #fff, transparent);
-    background-size: 200px 200px;
-    opacity: 0.3;
-}
-
-.clouds {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 50%;
-    background: url('https://raw.githubusercontent.com/francois-rozet/sleepy-assets/main/clouds.png');
-    /* Fallback or conceptual */
-    /* Since we don't have the exact asset, we simulate a cloud fog */
-    background: linear-gradient(to top, #4f46e5 0%, transparent 100%);
-    opacity: 0.2;
-    filter: blur(60px);
+    background: linear-gradient(to bottom, rgba(2, 6, 23, 0.3), rgba(2, 6, 23, 0.6));
+    z-index: 1;
 }
 
 .hero-content {
-    max-width: 800px;
-    z-index: 1;
-    padding-top: 4rem;
+    position: relative;
+    z-index: 2;
+    max-width: 1000px;
+    padding: 3rem;
 }
 
 /* Section Common */
@@ -284,9 +276,8 @@ section {
 }
 
 .check-list li {
-    font-size: 0.9rem;
+    font-size: 1rem;
     color: var(--text-muted);
-    margin-bottom: 0.5rem;
     display: flex;
     align-items: center;
 }
@@ -319,27 +310,71 @@ section {
 .audio-card {
     grid-column: span 2;
     grid-row: span 2;
-    background: linear-gradient(135deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.8));
+    background: #0f172a;
+    /* Deep blue background */
+    display: flex;
+    flex-direction: row;
+    /* Horizontal layout */
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    /* Clear padding to let visual bleed */
+}
+
+.audio-content {
+    width: 45%;
+    padding: 3rem;
+    z-index: 2;
 }
 
 .audio-content h3 {
-    font-size: 3rem;
+    font-size: 4rem;
     font-family: var(--font-body);
     font-weight: 700;
-    margin-bottom: 0;
+    margin-bottom: 0.5rem;
     line-height: 1;
+    color: #fff;
+}
+
+.audio-content h4 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
 }
 
 .audio-visual {
-    margin-top: 2rem;
-    opacity: 0.5;
+    position: absolute;
+    right: -20px;
+    top: 20px;
+    width: 60%;
+    height: 120%;
+    transform: rotate(5deg);
+    opacity: 1;
 }
 
 .icon-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
+}
+
+.icon-item {
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
     font-size: 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.icon-item svg {
+    opacity: 0.8;
 }
 
 .alarm-card {
@@ -347,6 +382,7 @@ section {
     grid-row: span 1;
     text-align: center;
     align-items: center;
+    background: #0f172a;
 }
 
 .circle-chart {
@@ -365,145 +401,230 @@ section {
 .night-mode-card {
     grid-column: span 1;
     grid-row: span 1;
-    background: radial-gradient(circle at top right, #312e81, #0f172a);
+    background: #0f172a;
+    background-image: url('images/nuit_paisible.jpg');
+    background-size: 380px;
+    background-position: center 0px;
+    background-repeat: no-repeat;
 }
 
 .journal-card {
     grid-column: span 2;
     grid-row: span 1;
+    display: flex;
     flex-direction: row;
     align-items: center;
-}
-
-.journal-text {
-    flex: 1;
-    margin-right: 1rem;
-}
-
-.tags {
-    display: flex;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-    margin-top: 1rem;
-}
-
-.tag {
-    font-size: 0.75rem;
-    padding: 4px 12px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-}
-
-.journal-ui {
-    flex: 1;
-    background: rgba(0, 0, 0, 0.2);
-    padding: 1rem;
-    border-radius: 12px;
-}
-
-.week-row {
-    display: flex;
     justify-content: space-between;
+    background: #0f172a;
+    padding: 0;
+    overflow: hidden;
 }
 
-.day {
-    width: 24px;
-    height: 24px;
+.journal-content {
+    flex: 1;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 50%;
+}
+
+.journal-content h3 {
+    font-size: 1.5rem;
+    font-family: var(--font-body);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.journal-content p {
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+.mood-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.mood-badge {
+    background: #3730a3;
+    color: #e0e7ff;
+    padding: 0.5rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transform: rotate(-2deg);
+}
+
+.mood-badge.badge-2 {
+    background: #4338ca;
+    transform: rotate(2deg);
+}
+
+.mood-badge.badge-3 {
+    background: #4f46e5;
+    transform: rotate(-1deg);
+}
+
+.mood-badge.badge-4 {
+    background: #6366f1;
+    transform: rotate(3deg);
+}
+
+.journal-visual {
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 0.7rem;
-    border-radius: 4px;
-    background: rgba(255, 255, 255, 0.05);
+}
+
+.journal-image {
+    max-width: 90%;
+    /* Allow some breathing room or full width */
+    height: auto;
+    object-fit: contain;
+    transform: translateY(20px);
+    border-radius: 20px;
 }
 
 .day.active {
     background: var(--primary-color);
 }
 
-/* Experts Section */
+/* Expert Audio Player */
 .expert-card {
     background: #0f172a;
-    padding: 0;
-    max-width: 800px;
+    border-radius: 24px;
+    padding: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
-.expert-profile {
+.player-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.player-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.expert-info {
     display: flex;
     align-items: center;
-    padding: 2rem;
     gap: 1.5rem;
 }
 
-.expert-avatar img {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
+.expert-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    /* Rounded square look from mockup */
     object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.expert-info h4 {
+.expert-text h4 {
     font-family: var(--font-body);
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
     margin-bottom: 0.2rem;
+    color: #fff;
 }
 
-.expert-info span {
-    font-size: 0.9rem;
-    color: var(--text-muted);
+.expert-text span {
+    font-size: 0.95rem;
+    color: #475569;
+    /* Muted blue-grey */
 }
 
-.play-btn-large {
-    margin-left: auto;
-    width: 50px;
-    height: 50px;
+.play-btn {
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
-    background: #334155;
+    background: #1e3a8a;
+    /* Darker Blue Button */
+    color: #fff;
     border: none;
-    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
 }
 
-.audio-track {
-    background: #1e293b;
-    padding: 1rem 2rem;
+.play-btn:hover {
+    transform: scale(1.05);
+    background: #1e40af;
+}
+
+.play-btn svg {
+    width: 28px;
+    height: 28px;
+    fill: currentColor;
+}
+
+.player-bottom {
     display: flex;
     align-items: center;
     gap: 1rem;
-    border-bottom-left-radius: var(--border-radius-md);
-    border-bottom-right-radius: var(--border-radius-md);
-}
-
-.progress-bar {
-    flex: 1;
-    height: 4px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 2px;
-    position: relative;
-}
-
-.progress {
-    height: 100%;
-    background: var(--primary-color);
-    border-radius: 2px;
-}
-
-.current-time,
-.total-time {
-    font-size: 0.8rem;
+    color: #475569;
+    font-size: 0.9rem;
     font-family: monospace;
-    opacity: 0.7;
+}
+
+.progress-bar-container {
+    flex: 1;
+    position: relative;
+    height: 6px;
+    background: #1e293b;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+}
+
+/* Custom Range Input Styling */
+#seek-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    background: transparent;
+    border-radius: 3px;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+}
+
+#seek-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 0px;
+    /* Hide thumb or make it small/invisible as per mockup? Mockup has no visible thumb, just a bar */
+    width: 0px;
+}
+
+#seek-slider:focus {
+    outline: none;
+}
+
+/* The visual progress fill */
+.progress-fill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: #6366f1;
+    /* Primary color fill */
+    width: 0%;
+    border-radius: 3px;
+    z-index: 1;
+    pointer-events: none;
 }
 
 /* FAQ */
-.faq-container {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
 .faq-item {
     margin-bottom: 1rem;
     border-radius: var(--border-radius-sm);
@@ -524,6 +645,16 @@ section {
     font-weight: 500;
     cursor: pointer;
     text-align: left;
+    white-space: nowrap;
+    /* Single line */
+}
+
+/* Ensure text truncates if too long, or just stays single line */
+.faq-question span:first-child {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 1rem;
 }
 
 .faq-answer {
@@ -736,5 +867,18 @@ footer {
 
     .mobile-menu-toggle {
         display: block;
+    }
+
+    .faq-question {
+        white-space: normal;
+        /* Allow wrap on mobile */
+        align-items: flex-start;
+        /* Align icon to top */
+    }
+
+    .faq-question span:first-child {
+        white-space: normal;
+        overflow: visible;
+        text-overflow: clip;
     }
 }
