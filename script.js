@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // REPLACE 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with actual values
             emailjs.send('service_2dcz481', 'template_rz11zra', templateParams)
                 .then(function () {
-                    alert('Inscription réussie ! Vous allez recevoir votre routine par mail.');
+                    alert('Inscription réussie ! Vous allez recevoir votre test de routine par mail.');
                     emailInput.value = ''; // Clear input
                     btn.innerText = 'Envoyé !';
                     setTimeout(() => {
