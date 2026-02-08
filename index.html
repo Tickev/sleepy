@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-JMM87ZM98M"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
@@ -29,7 +28,7 @@
 <body>
     <header id="header">
         <div class="wide-wrapper header-container">
-            <a href="#" class="logo">
+            <a href="#" class="logo" data-name="Header - Logo">
                 <img src="images/sleepy-logo.svg" alt="Sleepy Logo">
             </a>
             <nav>
@@ -39,10 +38,11 @@
                     <span></span>
                 </div>
                 <ul class="nav-links">
-                    <li><a href="#routine">Routine</a></li>
-                    <li><a href="#content">Contenu</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#footer-cta" class="btn-primary small">Télécharger Sleepy</a></li>
+                    <li><a href="#routine" data-name="Header - Nav Routine">Routine</a></li>
+                    <li><a href="#content" data-name="Header - Nav Contenu">Contenu</a></li>
+                    <li><a href="#faq" data-name="Header - Nav FAQ">FAQ</a></li>
+                    <li><a href="#footer-cta" class="btn-primary small" data-name="Header - CTA Télécharger">Télécharger
+                            Sleepy</a></li>
                 </ul>
             </nav>
         </div>
@@ -57,7 +57,8 @@
                         <h1>Découvre le pouvoir d'un sommeil <em>réparateur</em></h1>
                         <p>Sleepy t’accompagne chaque soir avec une routine pour calmer ton esprit et faciliter ton
                             endormissement</p>
-                        <a href="#footer-cta" class="btn-hero">Je teste ma routine</a>
+                        <a href="#footer-cta" class="btn-hero" data-name="Hero - CTA Test Routine">Je teste ma
+                            routine</a>
                     </div>
                 </div>
             </div>
@@ -347,7 +348,8 @@
                             concevoir ta première routine personnalisée.</p>
                         <form class="cta-form">
                             <input type="email" placeholder="Adresse e-mail" required>
-                            <button type="submit" class="cta-btn">Je fais le test</button>
+                            <button type="submit" class="cta-btn" data-name="Footer CTA - Faire le test">Je fais le
+                                test</button>
                         </form>
                     </div>
                     <div class="cta-image">
@@ -362,11 +364,11 @@
             <div class="container">
                 <!-- Top Navigation -->
                 <div class="footer-nav fade-in-up">
-                    <a href="#routine">ROUTINE</a>
+                    <a href="#routine" data-name="Footer - Nav Routine">ROUTINE</a>
                     <span class="separator">|</span>
-                    <a href="#content">CONTENU</a>
+                    <a href="#content" data-name="Footer - Nav Contenu">CONTENU</a>
                     <span class="separator">|</span>
-                    <a href="#faq">FAQ</a>
+                    <a href="#faq" data-name="Footer - Nav FAQ">FAQ</a>
                 </div>
 
                 <!-- Main Footer Content -->

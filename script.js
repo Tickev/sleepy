@@ -138,4 +138,107 @@ document.addEventListener('DOMContentLoaded', () => {
             return `${min < 10 ? '0' : ''}${min}:${sec < 10 ? '0' : ''}${sec}`;
         }
     }
+
+    // --- Click Tracking & Reporting System ---
+    const clickLog = [];
+
+    // Function to log clicks
+    function logClick(element, type) {
+        const now = new Date();
+        const timestamp = now.toLocaleString();
+
+        // Priority: data-name > innerText > alt > 'Inconnu'
+        let identifier = element.getAttribute('data-name');
+        if (!identifier) {
+            identifier = element.innerText || element.alt || 'Inconnu';
+        }
+
+        const id = element.id ? `#${element.id}` : '';
+        const className = element.className ? `.${element.className.replace(/\s+/g, '.')}` : '';
+
+        const entry = {
+            time: timestamp,
+            type: type,
+            identifier: identifier.trim(),
+            selector: `${element.tagName.toLowerCase()}${id}${className}`
+        };
+
+        clickLog.push(entry);
+
+        // Google Analytics Event
+        if (typeof gtag === 'function') {
+            gtag('event', 'click', {
+                'event_category': type,
+                'event_label': entry.identifier,
+                'transport_type': 'beacon'
+            });
+        }
+
+        // console.log("Logged & Sent to GA:", entry); // Debug
+    }
+
+    // Global Click Listener
+    document.body.addEventListener('click', (event) => {
+        // Check if the clicked element or its parent is a button or link
+        const target = event.target.closest('button, a, .faq-question');
+
+        if (target) {
+            // Determine type
+            let type = 'Unknown';
+            if (target.tagName === 'BUTTON') type = 'Button';
+            else if (target.tagName === 'A') type = 'Link';
+            else if (target.classList.contains('faq-question')) type = 'FAQ Data';
+
+            logClick(target, type);
+        }
+    });
+
+    // Report Generation via Keyboard Shortcut (Ctrl + Shift + S)
+    document.addEventListener('keydown', (event) => {
+        if (event.ctrlKey && event.shiftKey && (event.key === 'S' || event.key === 's')) {
+            event.preventDefault(); // Prevent default browser save action if any
+            generateAndDownloadReport();
+        }
+    });
+
+    function generateAndDownloadReport() {
+        if (clickLog.length === 0) {
+            alert("Aucune donnée de clic enregistrée pour le moment.");
+            return;
+        }
+
+        // Generate content - Database/CSV Style
+        let fileContent = "Timestamp;Type;Nom;Selecteur\n"; // Header
+
+        clickLog.forEach(log => {
+            fileContent += `${log.time};${log.type};${log.identifier};${log.selector}\n`;
+        });
+
+        // Add a summary section at the bottom for quick view
+        fileContent += "\n--- STATS RÉSUMÉ ---\n";
+
+        // Summary by Element
+        const elementStats = clickLog.reduce((acc, curr) => {
+            const key = curr.identifier;
+            acc[key] = (acc[key] || 0) + 1;
+            return acc;
+        }, {});
+
+        Object.entries(elementStats)
+            .sort((a, b) => b[1] - a[1])
+            .forEach(([key, count]) => {
+                fileContent += `${key}: ${count} clics\n`;
+            });
+
+        // Create Blob and Download
+        const blob = new Blob([fileContent], { type: 'text/plain' });
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `KPI-Button_${new Date().toISOString().slice(0, 10)}.txt`; // Matches user's file name preference
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+    }
 });
