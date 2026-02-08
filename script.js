@@ -139,42 +139,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- Click Tracking & Reporting System ---
-    const clickLog = [];
+    // --- Click Tracking (Google Analytics) ---
 
-    // Function to log clicks
-    function logClick(element, type) {
-        const now = new Date();
-        const timestamp = now.toLocaleString();
-
+    // Function to track clicks
+    function trackClick(element, type) {
         // Priority: data-name > innerText > alt > 'Inconnu'
         let identifier = element.getAttribute('data-name');
         if (!identifier) {
             identifier = element.innerText || element.alt || 'Inconnu';
         }
 
-        const id = element.id ? `#${element.id}` : '';
-        const className = element.className ? `.${element.className.replace(/\s+/g, '.')}` : '';
-
-        const entry = {
-            time: timestamp,
-            type: type,
-            identifier: identifier.trim(),
-            selector: `${element.tagName.toLowerCase()}${id}${className}`
-        };
-
-        clickLog.push(entry);
+        let label = identifier.trim();
 
         // Google Analytics Event
         if (typeof gtag === 'function') {
             gtag('event', 'click', {
                 'event_category': type,
-                'event_label': entry.identifier,
+                'event_label': label,
                 'transport_type': 'beacon'
             });
+            // console.log("GA Event Sent:", type, label); // Debug
         }
-
-        // console.log("Logged & Sent to GA:", entry); // Debug
     }
 
     // Global Click Listener
@@ -189,56 +174,58 @@ document.addEventListener('DOMContentLoaded', () => {
             else if (target.tagName === 'A') type = 'Link';
             else if (target.classList.contains('faq-question')) type = 'FAQ Data';
 
-            logClick(target, type);
+            trackClick(target, type);
         }
     });
 
-    // Report Generation via Keyboard Shortcut (Ctrl + Shift + S)
-    document.addEventListener('keydown', (event) => {
-        if (event.ctrlKey && event.shiftKey && (event.key === 'S' || event.key === 's')) {
-            event.preventDefault(); // Prevent default browser save action if any
-            generateAndDownloadReport();
-        }
-    });
+    // --- Email Subscription (EmailJS) ---
+    const newsletterForm = document.getElementById('newsletter-form');
 
-    function generateAndDownloadReport() {
-        if (clickLog.length === 0) {
-            alert("Aucune donnée de clic enregistrée pour le moment.");
-            return;
-        }
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function (event) {
+            event.preventDefault();
 
-        // Generate content - Database/CSV Style
-        let fileContent = "Timestamp;Type;Nom;Selecteur\n"; // Header
+            const emailInput = document.getElementById('user-email');
+            const userEmail = emailInput.value;
+            const btn = newsletterForm.querySelector('button');
+            const originalBtnText = btn.innerText;
 
-        clickLog.forEach(log => {
-            fileContent += `${log.time};${log.type};${log.identifier};${log.selector}\n`;
+            // Visual feedback
+            btn.innerText = 'Envoi...';
+            btn.disabled = true;
+
+            // Prepare parameters for the template
+            // These names (to_email) must match your EmailJS template variables
+            const templateParams = {
+                to_email: userEmail,
+                // Add other params if your template needs them, e.g., to_name: 'Subscriber'
+            };
+
+            // Send Email
+            // REPLACE 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with actual values
+            emailjs.send('service_2dcz481', 'template_rz11zra', templateParams)
+                .then(function () {
+                    alert('Inscription réussie ! Vous allez recevoir votre routine par mail.');
+                    emailInput.value = ''; // Clear input
+                    btn.innerText = 'Envoyé !';
+                    setTimeout(() => {
+                        btn.innerText = originalBtnText;
+                        btn.disabled = false;
+                    }, 3000);
+
+                    // Optional: Track in GA
+                    if (typeof gtag === 'function') {
+                        gtag('event', 'generate_lead', {
+                            'event_category': 'Newsletter',
+                            'event_label': 'Footer Form'
+                        });
+                    }
+                }, function (error) {
+                    console.error('FAILED...', error);
+                    alert('Oups, une erreur est survenue. Vérifiez votre connexion ou réessayez plus tard.');
+                    btn.innerText = originalBtnText;
+                    btn.disabled = false;
+                });
         });
-
-        // Add a summary section at the bottom for quick view
-        fileContent += "\n--- STATS RÉSUMÉ ---\n";
-
-        // Summary by Element
-        const elementStats = clickLog.reduce((acc, curr) => {
-            const key = curr.identifier;
-            acc[key] = (acc[key] || 0) + 1;
-            return acc;
-        }, {});
-
-        Object.entries(elementStats)
-            .sort((a, b) => b[1] - a[1])
-            .forEach(([key, count]) => {
-                fileContent += `${key}: ${count} clics\n`;
-            });
-
-        // Create Blob and Download
-        const blob = new Blob([fileContent], { type: 'text/plain' });
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `KPI-Button_${new Date().toISOString().slice(0, 10)}.txt`; // Matches user's file name preference
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        window.URL.revokeObjectURL(url);
     }
 });
