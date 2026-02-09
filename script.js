@@ -203,17 +203,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Send Email
             // REPLACE 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with actual values
-            emailjs.send('service_2dcz481', 'template_rz11zra', templateParams)
+            emailjs.send('service_hdoh1iy', 'template_rz11zra', templateParams)
                 .then(function () {
-                    alert('Inscription réussie ! Vous allez recevoir votre test de routine par mail.');
-                    emailInput.value = ''; // Clear input
+                    emailInput.value = '';
                     btn.innerText = 'Envoyé !';
                     setTimeout(() => {
                         btn.innerText = originalBtnText;
                         btn.disabled = false;
                     }, 3000);
 
-                    // Optional: Track in GA
                     if (typeof gtag === 'function') {
                         gtag('event', 'generate_lead', {
                             'event_category': 'Newsletter',
