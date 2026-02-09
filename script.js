@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Send Email
             // REPLACE 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with actual values
-            emailjs.send('service_hdoh1iy', 'template_rz11zra', templateParams)
+            emailjs.send('service_hdoh1iy', 'template_wy6ykiq', templateParams)
                 .then(function () {
                     emailInput.value = '';
                     btn.innerText = 'Envoyé !';
