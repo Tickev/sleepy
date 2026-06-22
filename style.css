@@ -1191,14 +1191,52 @@ footer {
     }
 
     .hero-image-right {
-        justify-content: center;
-        margin-top: 2rem;
+        display: none;
     }
 
     /* Grids */
-    .routine-grid,
+    .routine-grid {
+        grid-template-columns: 1fr;
+    }
+
     .bento-grid {
         grid-template-columns: 1fr;
+        grid-auto-rows: minmax(250px, auto);
+    }
+
+    .audio-card,
+    .alarm-card,
+    .night-mode-card,
+    .journal-card {
+        grid-column: 1 / -1;
+        grid-row: auto;
+    }
+
+    .audio-card {
+        flex-direction: column;
+    }
+
+    .audio-content {
+        width: 100%;
+        padding: 2rem;
+    }
+
+    .audio-visual {
+        position: relative;
+        width: 100%;
+        right: 0;
+        top: 0;
+        transform: none;
+        padding: 2rem;
+    }
+
+    .journal-card {
+        flex-direction: column;
+    }
+
+    .journal-content {
+        max-width: 100%;
+        padding: 2rem;
     }
 
     .routine-card {
