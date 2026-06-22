@@ -328,19 +328,16 @@ section {
     border-radius: var(--border-radius-md);
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s;
     overflow: hidden;
     padding: 0;
-}
-
-.routine-card:hover {
-    transform: translateY(-5px);
+    height: 450px;
 }
 
 .card-content {
     padding: 1.5rem 1.5rem 0.5rem;
     z-index: 2;
     position: relative;
+    flex-shrink: 0;
 }
 
 .card-icon {
@@ -359,9 +356,10 @@ section {
     flex: 1;
     display: flex;
     justify-content: center;
-    align-items: flex-end;
+    align-items: flex-start;
     position: relative;
     overflow: hidden;
+    min-height: 0;
 }
 
 .card-image img {
@@ -369,12 +367,6 @@ section {
     max-width: 220px;
     height: auto;
     display: block;
-    transform: translateY(15%);
-    transition: transform 0.4s ease;
-}
-
-.routine-card:hover .card-image img {
-    transform: translateY(10%);
 }
 
 .routine-card h3 {
@@ -1324,4 +1316,43 @@ footer {
 
 .delay-300 {
     transition-delay: 0.3s;
+}
+
+/* Back to Top Button */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background: #4f46e5;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+}
+
+.back-to-top.visible:hover {
+    transform: translateY(-3px);
 }
