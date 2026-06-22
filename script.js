@@ -179,30 +179,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- Email Subscription (EmailJS) ---
-    const newsletterForm = document.getElementById('newsletter-form');
+    function setupNewsletterForm(formId, inputId, eventLabel) {
+        const form = document.getElementById(formId);
+        if (!form) return;
 
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', function (event) {
+        form.addEventListener('submit', function (event) {
             event.preventDefault();
 
-            const emailInput = document.getElementById('user-email');
+            const emailInput = document.getElementById(inputId);
             const userEmail = emailInput.value;
-            const btn = newsletterForm.querySelector('button');
+            const btn = form.querySelector('button');
             const originalBtnText = btn.innerText;
 
             // Visual feedback
             btn.innerText = 'Envoi...';
             btn.disabled = true;
 
-            // Prepare parameters for the template
-            // These names (to_email) must match your EmailJS template variables
             const templateParams = {
                 to_email: userEmail,
-                // Add other params if your template needs them, e.g., to_name: 'Subscriber'
             };
 
             // Send Email
-            // REPLACE 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with actual values
             emailjs.send('service_hdoh1iy', 'template_wy6ykiq', templateParams)
                 .then(function () {
                     emailInput.value = '';
@@ -215,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (typeof gtag === 'function') {
                         gtag('event', 'generate_lead', {
                             'event_category': 'Newsletter',
-                            'event_label': 'Footer Form'
+                            'event_label': eventLabel
                         });
                     }
                 }, function (error) {
@@ -226,4 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
         });
     }
+
+    setupNewsletterForm('newsletter-form', 'user-email', 'Footer Form');
+    setupNewsletterForm('hero-newsletter-form', 'hero-user-email', 'Hero Form');
 });

@@ -26,6 +26,16 @@
 
 
 <body>
+    <div class="promo-banner">
+        <div class="promo-marquee">
+            <span>🎉 Offre exclusive : -50% pour toute préinscription par mail ! 🎉</span>
+            <span>🎉 Offre exclusive : -50% pour toute préinscription par mail ! 🎉</span>
+            <span>🎉 Offre exclusive : -50% pour toute préinscription par mail ! 🎉</span>
+            <span>🎉 Offre exclusive : -50% pour toute préinscription par mail ! 🎉</span>
+            <span>🎉 Offre exclusive : -50% pour toute préinscription par mail ! 🎉</span>
+            <span>🎉 Offre exclusive : -50% pour toute préinscription par mail ! 🎉</span>
+        </div>
+    </div>
     <header id="header">
         <div class="wide-wrapper header-container">
             <a href="#" class="logo" data-name="Header - Logo">
@@ -51,14 +61,19 @@
     <main>
         <!-- Hero Section -->
         <section id="hero">
-            <div class="wide-wrapper">
-                <div class="hero-banner fade-in-up">
-                    <div class="hero-content">
-                        <h1>Découvre le pouvoir d'un sommeil <em>réparateur</em></h1>
-                        <p>Sleepy t’accompagne chaque soir avec une routine pour calmer ton esprit et faciliter ton
-                            endormissement</p>
-                        <a href="#footer-cta" class="btn-hero" data-name="Hero - CTA Test Routine">Je teste ma
-                            routine</a>
+            <div class="wide-wrapper hero-layout">
+                <div class="hero-content-left fade-in-up">
+                    <h1>Mieux dormir,<br><em>ça commence ici</em></h1>
+                    <p>Préinscris-toi maintenant et bénéficie de -50% sur l'abonnement Sleepy à vie. Offre réservée aux
+                        premiers inscrits.</p>
+                    <form class="hero-form" id="hero-newsletter-form">
+                        <input type="email" id="hero-user-email" placeholder="Adresse e-mail" required>
+                        <button type="submit" class="cta-btn" data-name="Hero CTA - Envoyer">Envoyer</button>
+                    </form>
+                </div>
+                <div class="hero-image-right fade-in-up delay-100">
+                    <div class="mockup-placeholder">
+                        <img src="images/mockup.png" alt="mockup-sleepy" class="app-mockup-img">
                     </div>
                 </div>
             </div>
@@ -68,65 +83,67 @@
         <section id="routine">
             <div class="container">
                 <div class="section-header fade-in-up">
-                    <h2>Ta routine <em>id&eacute;ale</em></h2>
-                    <p>Une méthode simple et efficace pour transformer tes nuits</p>
+                    <h2>Des fonctionnalités <em>reposantes</em></h2>
+                    <p>Des fonctionnalités pensées pour transformer tes nuits, soir après soir</p>
                 </div>
                 <div class="routine-grid">
-                    <div class="routine-card glass fade-in-up delay-100">
-                        <div class="icon-box heart-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path
-                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
-                                </path>
-                            </svg>
+                    <!-- Card 1 -->
+                    <div class="routine-card card fade-in-up delay-100">
+                        <div class="card-content">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M12 20v-6M6 20V10M18 20V4" />
+                                </svg>
+                            </div>
+                            <h3>Une routine personnalisable</h3>
+                            <p>Créez votre propre rituel du soir avec des étapes sur mesure adaptées à vos envies pour
+                                préparer votre corps au sommeil.</p>
                         </div>
-                        <h3>Pourquoi</h3>
-                        <p>Un sommeil de qualité est essentiel pour ta santé physique et mentale. Stress, écrans, rythme
-                            de vie peuvent perturber ton repos.</p>
-                        <ul class="check-list">
-                            <li>Stress et anxiété réduits</li>
-                            <li>Améliorer sa santé</li>
-                            <li>Être plus productif</li>
-                        </ul>
+                        <div class="card-image">
+                            <img src="images/onboarding1.png" alt="Routine personnalisable">
+                        </div>
                     </div>
-                    <div class="routine-card glass fade-in-up delay-200">
-                        <div class="icon-box moon-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-                            </svg>
+
+                    <!-- Card 2 -->
+                    <div class="routine-card card fade-in-up delay-200">
+                        <div class="card-content">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <polyline points="12 6 12 12 16 14" />
+                                </svg>
+                            </div>
+                            <h3>Un réveil intelligent</h3>
+                            <p>Sleepy analyse vos cycles et vous réveille en douceur lors de votre phase de sommeil
+                                léger pour une journée en pleine forme.</p>
                         </div>
-                        <h3>Quoi</h3>
-                        <p>Une routine personnalisée qui s'adapte à tes besoins et préférences. Chaque soir, profite
-                            d'une expérience unique.</p>
-                        <ul class="check-list">
-                            <li>Méditation guidée</li>
-                            <li>Sons relaxants</li>
-                            <li>Journal de gratitude</li>
-                        </ul>
+                        <div class="card-image">
+                            <img src="images/onboarding2.png" alt="Réveil intelligent">
+                        </div>
                     </div>
-                    <div class="routine-card glass fade-in-up delay-300">
-                        <div class="icon-box sleep-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="M2 12h20"></path>
-                                <path d="M20 16v-4a8 8 0 1 0-16 0v4"></path>
-                                <path d="M4 16v2"></path>
-                                <path d="M20 16v2"></path>
-                            </svg>
+
+                    <!-- Card 3 -->
+                    <div class="routine-card card fade-in-up delay-300">
+                        <div class="card-content">
+                            <div class="card-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                    <polyline points="22 4 12 14.01 9 11.01" />
+                                </svg>
+                            </div>
+                            <h3>De bonnes habitudes</h3>
+                            <p>Il suffit de 10 jours pour ancrer une nouvelle habitude. Suivez vos progrès et ressentez
+                                les bienfaits d'un sommeil régulier.</p>
                         </div>
-                        <h3>Comment</h3>
-                        <p>Simple et efficace. Lance ta routine 30 minutes avant le coucher et laisse-toi guider vers un
-                            sommeil réparateur.</p>
-                        <ul class="check-list">
-                            <li>Suivi de sommeil</li>
-                            <li>Réveil intelligent</li>
-                            <li>Statistiques précises</li>
-                        </ul>
+                        <div class="card-image">
+                            <img src="images/onboarding3.png" alt="Suivi des habitudes">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -343,13 +360,13 @@
             <div class="container">
                 <div class="cta-card fade-in-up">
                     <div class="cta-content">
-                        <h2>Prêt à découvrir ta routine <em>idéale ?</em></h2>
-                        <p>Rejoins la communauté Sleepy et reçois immédiatement par mail notre test exclusif pour
-                            concevoir ta première routine personnalisée.</p>
+                        <h2>Ne rate pas le <em>lancement</em></h2>
+                        <p>Les premiers inscrits profitent de -50% à vie sur Sleepy. Laisse ton e-mail et on t'envoie
+                            tout dès la sortie.</p>
                         <form class="cta-form" id="newsletter-form">
                             <input type="email" id="user-email" placeholder="Adresse e-mail" required>
-                            <button type="submit" class="cta-btn" data-name="Footer CTA - Faire le test">Je fais le
-                                test</button>
+                            <button type="submit" class="cta-btn" data-name="Footer CTA - Profiter offre">J'en
+                                profite</button>
                         </form>
                     </div>
                     <div class="cta-image">
@@ -362,17 +379,8 @@
         <!-- Footer Bottom -->
         <footer>
             <div class="container">
-                <!-- Top Navigation -->
-                <div class="footer-nav fade-in-up">
-                    <a href="#routine" data-name="Footer - Nav Routine">ROUTINE</a>
-                    <span class="separator">|</span>
-                    <a href="#content" data-name="Footer - Nav Contenu">CONTENU</a>
-                    <span class="separator">|</span>
-                    <a href="#faq" data-name="Footer - Nav FAQ">FAQ</a>
-                </div>
-
                 <!-- Main Footer Content -->
-                <div class="footer-main fade-in-up delay-100">
+                <div class="footer-main fade-in-up">
                     <div class="footer-brand-col">
                         <div class="footer-logo">
                             <img src="images/sleepy-logo.svg" alt="Sleepy Logo">
@@ -413,11 +421,19 @@
                         </div>
                     </div>
 
+                    <div class="footer-links-col">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="#routine" data-name="Footer - Nav Routine">Routine</a></li>
+                            <li><a href="#content" data-name="Footer - Nav Contenu">Contenu</a></li>
+                            <li><a href="#faq" data-name="Footer - Nav FAQ">FAQ</a></li>
+                        </ul>
+                    </div>
+
                     <div class="footer-download-col">
                         <h4>Prêt à mieux dormir ?</h4>
                         <p>Télécharge Sleepy gratuitement</p>
                         <div class="store-buttons">
-                            <!-- Helper classes for potential icons/images later -->
                             <button class="store-btn google-play">
                                 <svg class="store-icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
                                     <path
